@@ -1,0 +1,10 @@
+
+
+| Objective / Requirement ID | Evaluation Criterion | Capability Bucket | Measurement Method | Metric | Threshold | User / Business Outcome |
+| :---- | :---- | :---- | :---- | :---- | :---- | :---- |
+|  O2 / FR2  | Extraction correctness | Document parsing accuracy and completeness  | Compare the parsed table with the original line by line.    | Transaction recall (parsed transactions out of the total), field-level accuracy for date, description, and amount | \>=98% of transactions parsed with the correct date, description, and amount per supported format | A whole month of transactions can be imported in one upload without retyping |
+|  O2 / FR4 | Categorization correctness | Classification accuracy (ML model quality) | Compare predicted categories with hand-labeled categories  | Accuracy, macro-F1 (macro because some categories are rare), and per-category F1  | Macro-F1 of at least 0.80 and better than the baseline  | Category totals reflect real spending, and users need to correct few transactions  |
+|  O2 / NFR2 | Answer groundedness |  Groundedness and factual consistency  | Run a test set, check each figure against the database, and review each claim against the retrieved records | Numeric accuracy, faithfulness rate  | Accuracy  \>=95%, Faithfulness \>= 90% | Users can rely on the answer for budgeting |
+| O3 / NFR5 | Seamlessness of data integration | Interoperability and data integrity  | Compare a value at input with the same value in the stored record and the final answer  | Schema validation error rate | zero value mismatches introduced between stages  | Smooth flow from upload to answer |
+| O3 / RAI1 | Whether the system avoids collecting credentials and avoids storing or forwarding unmasked sensitive identifiers   | Privacy and data minimization  | test uploads account numbers and card numbers, and scan stored records, logs, and LLM prompts for sensitive patterns  | Number of credential fields in the interface, and number of leaks found in prompts  | 0 credential fields and 0 leaks  | Breaching exposes less sensitive data  |
+
